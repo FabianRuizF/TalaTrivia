@@ -21,7 +21,8 @@ jobs:
       - name: Run uvicorn
         run: |
           cd project/app
-          uvicorn main:app --reload --host 0.0.0.0
+          uvicorn main:app --host 0.0.0.0 &
+          sleep 5
       - name: Test with pytest
         run: |
           cd project/tests
