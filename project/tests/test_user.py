@@ -24,7 +24,7 @@ def test_create_user(base_url):
     response = requests.post(f"{base_url}/{endpoint}", json=user_data)
 
     # Check if the response is correct, and if it returns the email without the password in the response
-    assert response.status_code == 200
+    assert response.status_code == 200, f"Unexpected status code: {response.status_code}, response is: {response.json()}"
     assert response.json()["email"] == user_data["email"]
     assert "password" not in response.json()
 
@@ -43,5 +43,4 @@ def test_delete_user(base_url):
     response = requests.delete(f"{base_url}/{endpoint}", json=user_data)
 
     # Check if the response is correct
-    assert response.status_code == 200, f"Unexpected status code: {response.status_code}"
-
+    assert response.status_code == 200, f"Unexpected status code: {response.status_code}, response is: {response.json()}"

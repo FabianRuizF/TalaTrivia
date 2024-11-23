@@ -44,4 +44,4 @@ jobs:
       - name: Test with pytest
         run: |
           cd project/tests
-          pytest  -v -s
+          pytest -s -vvl
