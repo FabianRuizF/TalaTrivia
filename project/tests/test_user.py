@@ -14,6 +14,7 @@ def test_create_user(base_url):
 
     # Test data
     user_data = {
+        "name" : "Test McTest",
         "email": "test@example.com",
         "password": "secure_password123"
     }
