@@ -7,9 +7,8 @@ class User(Base):
     __tablename__ = "user"
 
     user_id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
     email = Column(String, unique=True, index=True)
     password = Column(String)
 
     def __repr__(self):
-        return f"<User(id={self.id}, username={self.username}, email={self.email})>"
+        return f"<User(id={self.user_id}, email={self.email})>"
