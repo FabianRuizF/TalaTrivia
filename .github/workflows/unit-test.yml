@@ -32,7 +32,7 @@ jobs:
 
       - name: Simple wait for MariaDB
         run: | 
-          sleep 20
+          sleep 45
           docker logs mariadb
 
       - name: Run uvicorn
