@@ -44,3 +44,16 @@ def test_delete_user(base_url):
 
     # Check if the response is correct
     assert response.status_code == 200, f"Unexpected status code: {response.status_code}, response is: {response.json()}"
+
+
+def test_list_user(base_url):
+    endpoint = "user/list/"
+
+    # Send GET request
+    print(f"{base_url}/{endpoint}")
+    response = requests.get(f"{base_url}/{endpoint}")
+
+    # Check if the response is correct
+    assert response.status_code == 200, f"Unexpected status code: {response.status_code}, response is: {response.json()}"
+
+
