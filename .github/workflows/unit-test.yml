@@ -32,8 +32,13 @@ jobs:
 
       - name: Simple wait for MariaDB
         run: | 
-          sleep 45
+          sleep 25
           docker logs mariadb
+
+      - name: Startup and create the tables on mariadb
+        run: |
+          cd project 
+          python3 startup_database.py
 
       - name: Run uvicorn
         run: |
