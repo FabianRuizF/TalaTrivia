@@ -5,8 +5,8 @@ app = FastAPI()
 
 @app.on_event("startup")
 async def startup_event():
-    global settings
-    settings = get_settings(env="dev")
+    global project_settings
+    project_settings = settings.get_settings(env="test")
 
 @app.get("/")
 def root():
