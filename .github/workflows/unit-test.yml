@@ -18,6 +18,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Test docker
+        run: docker --version
+
       - name: Start MariaDB
         run: docker-compose up -d
       - name: Simple wait for MariaDB
