@@ -4,11 +4,13 @@ from services.user_service import create_user
 from schemas.user import UserResponse, UserCreate
 from database import database
 
-router = APIRouter(prefix="/users")
+router = APIRouter(prefix="/user")
 
 @router.post("/create/", response_model=UserResponse)
-def create_user(user: UserCreate, db: Session = Depends(database.get_db)):
+def create_user_endpoint(user: UserCreate, db: Session = Depends(database.get_db)):
+    print(db)
     try:
+        print(user)
         new_user = create_user(db=db, user=user)
         return new_user
     except Exception as e:

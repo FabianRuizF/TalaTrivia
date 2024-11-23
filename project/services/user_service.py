@@ -6,13 +6,13 @@ from schemas.user import UserCreate, UserResponse
 from sqlalchemy.orm import Session
 from config.settings import Settings
 
-settings = Settings()
 
 password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def create_user(user: UserCreate, db: Session ):
     hashed_password = password_context.hash(user.password)
     db_user = User(email=user.email, hashed_password=hashed_password)
+    print(db_user)
     try:
         db.add(db_user)
         db.commit()
