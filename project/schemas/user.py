@@ -11,3 +11,8 @@ class UserResponse(BaseModel):
     name: str
     class Config:
         from_attributes = True
+
+
+class UserDelete(BaseModel):
+    email: str
+

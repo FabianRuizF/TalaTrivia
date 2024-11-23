@@ -27,3 +27,21 @@ def test_create_user(base_url):
     assert response.status_code == 200
     assert response.json()["email"] == user_data["email"]
     assert "password" not in response.json()
+
+
+def test_delete_user(base_url):
+    endpoint = "user/delete/"
+
+    # Test data
+    user_email = "test@example.com"
+    user_data = {
+        "email": user_email,
+    }
+
+    # Send DELETE request
+    print(f"{base_url}/{endpoint}")
+    response = requests.delete(f"{base_url}/{endpoint}", json=user_data)
+
+    # Check if the response is correct
+    assert response.status_code == 200, f"Unexpected status code: {response.status_code}"
+
