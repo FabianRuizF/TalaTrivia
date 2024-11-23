@@ -3,17 +3,20 @@ from sqlalchemy.orm import Session
 from services.user_service import create_user
 from schemas.user import UserResponse, UserCreate
 from database import database
+from utils.exception import DatabaseError
 
 router = APIRouter(prefix="/user")
 
 @router.post("/create/", response_model=UserResponse)
 def create_user_endpoint(user: UserCreate, db: Session = Depends(database.get_db)):
-    print(db)
     try:
-        print(user)
         new_user = create_user(db=db, user=user)
         return new_user
+    except DatabaseError as e:
+        print(e)
+        raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=400, detail=str(e))
 
 
