@@ -7,6 +7,7 @@ class TriviaCreate(BaseModel):
     name: str
     description: str
     question_list_id: List[int]
+    user_list_id: List[int]
 
 
 class TriviaResponse(BaseModel):
