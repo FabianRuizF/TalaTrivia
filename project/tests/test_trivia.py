@@ -10,6 +10,23 @@ def base_url():
     return f"{url}:{port}"
 
 def test_create_trivia(base_url):
+    endpoint = "user/create/"
+    # Test data
+    user_data = {
+        "name" : "Don McTest",
+        "email": "donmc@example.com",
+        "password": "secure_password123"
+    }
+
+    # Send POST request
+    print(f"{base_url}/{endpoint}")
+    try:
+        response = requests.post(f"{base_url}/{endpoint}", json=user_data)
+        user_id = response.json()["user_id"]
+    except Exception as e:
+        pytest.skip("Not been able to create trivia, create user failed")
+
+
     endpoint = "question/create/"
     question_data = {
         "question": "What is the chemical symbol for gold?",
@@ -27,7 +44,8 @@ def test_create_trivia(base_url):
         response = requests.post(f"{base_url}/{endpoint}", json=question_data)
         question_id  = response.json()["question_id"]
     except Exception as e:
-        pytest.skip("Not been able to create trivia")
+        pytest.skip("Not been able to create trivia, create question failed")
+
 
 
     endpoint = "trivia/create/"
@@ -35,7 +53,8 @@ def test_create_trivia(base_url):
     user_data = {
         "name" : "Trivia Test",
         "description": "This is a trivia for testing",
-        "question_list_id": [question_id]
+        "question_list_id": [question_id],
+        "user_list_id": [user_id],
     }
 
     # Send POST request
