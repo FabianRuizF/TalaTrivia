@@ -4,7 +4,6 @@ from database import database
 from models.user import User
 from schemas.user import UserCreate, UserResponse, UserDelete, UserListResponse
 from sqlalchemy.orm import Session
-from config.settings import Settings
 from utils.exception import DatabaseError
 
 password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

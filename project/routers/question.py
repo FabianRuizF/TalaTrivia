@@ -20,7 +20,7 @@ def create_question_endpoint(question: QuestionCreate, db: Session = Depends(dat
         print(e)
         raise HTTPException(status_code=400, detail=str(e))
 
-@router.delete("/{id}/", response_model=QuestionResponse)
+@router.delete("/{question_id}/", response_model=QuestionResponse)
 def delete_question_endpoint(question: QuestionDelete, db: Session = Depends(database.get_db)):
     try:
         is_deleted = delete_question(question=question, db=db)
