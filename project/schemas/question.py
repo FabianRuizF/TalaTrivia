@@ -17,9 +17,8 @@ class QuestionResponse(BaseModel):
     answer_4: str
     correct_answer: int
     difficulty: int
-
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class QuestionListResponse(BaseModel):
     question_list: List[QuestionResponse]

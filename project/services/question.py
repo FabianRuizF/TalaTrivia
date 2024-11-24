@@ -7,15 +7,19 @@ from utils.exception import DatabaseError
 
 
 def create_question(question: QuestionCreate, db: Session ):
-    db_question = Question()
+    db_question = Question(answer_1=question.answer_1, answer_2=question.answer_2, answer_3=question.answer_3, answer_4=question.answer_4,
+        correct_answer=question.correct_answer,
+        difficulty=question.difficulty
+    )
     try:
         db.add(db_question)
         db.commit()
         db.refresh(db_question)
+        print(db_question)
         return QuestionResponse.from_orm(db_question)
-    except IntegrityError:
+    except IntegrityError as error:
         db.rollback()
-        raise ValueError("Email already exists")
+        raise ValueError(f"There is an integrity error while creating question: {error}")
     except ProgrammingError as error:
         db.rollback()
         raise DatabaseError(f"Database error: {str(error)}")
@@ -25,7 +29,7 @@ def create_question(question: QuestionCreate, db: Session ):
 
 def delete_question(question: QuestionDelete, db: Session ):
     try:
-        db_question = db.query(Question).filter(Question.id == question.id).first()
+        db_question = db.query(Question).filter(Question.question_id == question.question_id).first()
         if db_question is None:
             raise ValueError("Question not found")
         db.delete(db_question)
