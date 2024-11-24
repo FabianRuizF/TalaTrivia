@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from services.user_service import create_user, delete_user, list_all_user
+from services.user import create_user, delete_user, list_all_user
 from schemas.user import UserCreate, UserResponse, UserDelete, UserListResponse
 from database import database
 from utils.exception import DatabaseError
