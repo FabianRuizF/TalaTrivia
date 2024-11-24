@@ -8,13 +8,10 @@ from models.trivia import Trivia
 from utils.exception import DatabaseError
 
 def list_question_from_trivia(trivia_question: TriviaQuestionRead, db: Session):
-    db_trivia_question = db.query(TriviaQuestion).filter(TriviaQuestion.trivia_id == trivia_question.trivia_id).all()
-    d = []
-    for a  in db_trivia_question:
-        db_question = db.query(Question).filter(Question.question_id == a.question_id).first()
-        d.append(db_question)
-        print(a.question_id)
-        print(db_question)
-    print(db_trivia_question)
-    dummy = TriviaQuestionListResponse(question_list=d)
-    return dummy
+    db_question_list = db.query(TriviaQuestion).filter(TriviaQuestion.trivia_id == trivia_question.trivia_id).all()
+    question_list = []
+    for question  in db_question_list:
+        db_question = db.query(Question).filter(Question.question_id == question.question_id).first()
+        question_list.append(db_question)
+    trivia_question_list = TriviaQuestionListResponse(question_list=question_list)
+    return trivia_question_list

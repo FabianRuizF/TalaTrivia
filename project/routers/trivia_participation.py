@@ -10,8 +10,8 @@ router = APIRouter(prefix="/trivia_participation")
 @router.post("/read/", response_model=TriviaQuestionListResponse)
 def list_question_from_trivia_endpoint(trivia_question: TriviaQuestionRead, db: Session = Depends(database.get_db)):
     try:
-        list_question = list_question_from_trivia(trivia_question=trivia_question, db=db)
-        return list_question
+        question_list = list_question_from_trivia(trivia_question=trivia_question, db=db)
+        return question_list
     except DatabaseError as e:
         print(e)
         raise HTTPException(status_code=500, detail=str(e))
