@@ -13,4 +13,4 @@ class User(Base):
     name = Column(String(50))
 
     def __repr__(self):
-        return f"<User(id={self.user_id}, name={self.name}, email={self.email})>"
+        return f"<User(user_id={self.user_id}, name={self.name}, email={self.email})>"
