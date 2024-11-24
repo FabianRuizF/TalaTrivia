@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from fastapi.responses import JSONResponse
 from models.user import User
 from config import settings
-from routers import user,question
+from routers import user,question,trivia
 
 app = FastAPI()
 
@@ -21,3 +21,4 @@ def root():
 
 app.include_router(user.router)
 app.include_router(question.router)
+app.include_router(trivia.router)
