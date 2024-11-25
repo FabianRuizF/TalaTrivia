@@ -154,5 +154,7 @@ It might need a model, but that is separated from our structure, since the model
 - Refactoring scripts that doesnt adhere to the overall code structure (for example services/trivia_participation.py has missing try/excepts , schemas name might need to be refactored so it make sense depending on the context, and so on)
 - Checking the consistency of the tests on github actions, sometimes they might fail for unusual reasons (broken pipe) , instead of real code errors.
 - Make the swagger documentation of the API much more readable, it should be usable right now ,but there still lots of work to improve.
+- Add a jwt token login for our API
+- Add a role for user, so it can be an admin (which should be able to create trivia/questions) , superadmin (which should be able to create users and everything that an admin do), and user (can participate on trivia, can answer them)
   
   
