@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  talatrivia_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: talatrivia_api
+    restart: always
+    depends_on:
+      mariadb:
+        condition: service_healthy
   mariadb:
     image: mariadb:10.5
     container_name: mariadb
@@ -10,8 +19,13 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./mariadb_data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   mariadb_data:

@@ -28,11 +28,11 @@ jobs:
           chmod +x /usr/local/bin/docker-compose
 
       - name: Start MariaDB
-        run: docker-compose up -d
+        run: docker-compose up -d mariadb
 
       - name: Simple wait for MariaDB
         run: | 
-          sleep 25
+          sleep 5
           docker logs mariadb
 
       - name: Run uvicorn
