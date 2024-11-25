@@ -135,6 +135,14 @@ If we want to create another funcionality , in this case, user_ranking we would 
 
 It might need a model, but that is separated from our structure, since the models reflects our database diagram. 
   
+# Testing
+For CI/CD we use github actions. so every commit passes thorugh our tests.
+This is why the tests needs to be done properly, if they are badly coded, or doesn't respect our functionalities intentions, they might fail, or worse, falsely pass.
+
+Github actions runs on every commit, so for every commit, all tests should be passed. Right now the commits are not failing in case the pytest fails to give mor flexibility, but that should change.
+
+![Alt text](images/github_actions.png)
+
 
 # Database Diagram
 ![Alt text](images/database_simplified_diagram.png)
@@ -156,5 +164,6 @@ It might need a model, but that is separated from our structure, since the model
 - Make the swagger documentation of the API much more readable, it should be usable right now ,but there still lots of work to improve.
 - Add a jwt token login for our API
 - Add a role for user, so it can be an admin (which should be able to create trivia/questions) , superadmin (which should be able to create users and everything that an admin do), and user (can participate on trivia, can answer them)
+- Using cache on github actions to make them faster
   
   
