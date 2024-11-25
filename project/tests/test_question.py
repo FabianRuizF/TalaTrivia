@@ -1,6 +1,6 @@
 import pytest
 import requests
-
+import time
 
 
 @pytest.fixture(scope="function")
@@ -21,6 +21,7 @@ def test_create_question(base_url):
         "correct_answer": 1,
         "difficulty": 2
     }
+    time.sleep(0.5)
     response = requests.post(f"{base_url}/{endpoint}", json=question_data)
 
     assert response.status_code == 200, f"Unexpected status code: {response.status_code}, response is: {response.json()}"
