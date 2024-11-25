@@ -62,6 +62,7 @@ print(response.json())
 ```
 this should print back the response with an id, for example {'question_id': 14, 'answer_1': 'Au', 'answer_2': 'Ag', 'answer_3': 'Hg', 'answer_4': 'Pb', 'correct_answer': 1, 'difficulty': 2}
 
+To check more responses and its schemas, they can be viewed on  /project/scehmas/  , and also viewed on http://{deployed_ip}:8000/docs
 
 # Project description
 The project uses FastAPI to be able to scale up in a much easier way than flask.
@@ -151,5 +152,7 @@ It might need a model, but that is separated from our structure, since the model
 - Programming the ranking functionality, it's mostly done since it just need to list the data from trivia_user table, which should have the score if its answered
 - Doing an automatic linting to follow pep8 codestyle. This should be done on github actions, so the linting check is automatic.
 - Refactoring scripts that doesnt adhere to the overall code structure (for example services/trivia_participation.py has missing try/excepts , schemas name might need to be refactored so it make sense depending on the context, and so on)
+- Checking the consistency of the tests on github actions, sometimes they might fail for unusual reasons (broken pipe) , instead of real code errors.
+- Make the swagger documentation of the API much more readable, it should be usable right now ,but there still lots of work to improve.
   
   
