@@ -27,16 +27,17 @@ jobs:
           curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           chmod +x /usr/local/bin/docker-compose
 
-      - name: Start the project
-        run: docker-compose up -d
+      - name: Start the project with mariadb only
+        run: docker-compose up -d mariadb
 
-      - name: Simple wait for MariaDB
-        run: | 
-          sleep 5
-          docker logs mariadb
+      - name: Start the project with api 
+        run: docker-compose up -d talatrivia_api
 
       - name: Check if talatrivia_api is up
         run: docker logs talatrivia_api
+
+      - name: Check if mariadb is up
+        run: docker logs mariadb
 
       - name: Test with pytest
         run: |
