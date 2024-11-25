@@ -15,4 +15,4 @@ WORKDIR /project
 RUN ls
 RUN ls
 # Run the application
-CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0"]
+CMD ["uvicorn", "-u", "main:app", "--reload", "--host", "0.0.0.0"]

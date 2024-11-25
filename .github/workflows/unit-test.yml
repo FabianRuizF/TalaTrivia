@@ -30,6 +30,9 @@ jobs:
       - name: Start the project with mariadb only
         run: docker-compose up -d mariadb
 
+      - name: wait for mariadb to fully start
+        run: sleep 40
+
       - name: Start the project with api 
         run: docker-compose up -d talatrivia_api
 
