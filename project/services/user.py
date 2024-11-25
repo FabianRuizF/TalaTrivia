@@ -1,6 +1,5 @@
 from sqlalchemy.exc import IntegrityError, ProgrammingError
 from passlib.context import CryptContext
-from database import database
 from models.user import User
 from schemas.user import UserCreate, UserResponse, UserDelete, UserListResponse
 from sqlalchemy.orm import Session

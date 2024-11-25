@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-from database import database
 from schemas.trivia_participation import TriviaParticipationRead, TriviaQuestionListResponse, TriviaParticipationAnswer, TriviaParticipationScoreResponse
 from models.trivia_question import TriviaQuestion
 from models.trivia_user import TriviaUser

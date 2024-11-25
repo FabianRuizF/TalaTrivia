@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-from database import database
 from schemas.trivia import TriviaCreate, TriviaResponse
 from models.trivia_question import TriviaQuestion
 from models.trivia_user import TriviaUser
