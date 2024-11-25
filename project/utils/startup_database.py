@@ -9,8 +9,9 @@ from models.trivia_user import TriviaUser
 from sqlalchemy.ext.declarative import declarative_base
 from models.base import Base
 
-settings = settings.get_settings(env="test")
-print(settings)
-SQLALCHEMY_DATABASE_URL = settings.database_url
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
-Base.metadata.create_all(engine)
+def startup_database():
+    database_settings = settings.get_settings(env="test")
+    SQLALCHEMY_DATABASE_URL = database_settings.database_url
+    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+    Base.metadata.create_all(engine, checkfirst=True)
+
