@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     container_name: talatrivia_api
     restart: always
+    ports:
+      - "8000:8000"
   mariadb:
     image: mariadb:10.5
     container_name: mariadb
