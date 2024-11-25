@@ -11,10 +11,6 @@ async def startup_event():
     startup_database()
 
 
-@app.get("/")
-def root():
-    return {"Hello": "World"}
-
 
 
 app.include_router(user.router)
