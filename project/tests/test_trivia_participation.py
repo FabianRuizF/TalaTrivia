@@ -23,8 +23,7 @@ def test_list_question_from_trivia(base_url):
     # Check if the response is correct, and if it returns the email without the password in the response
     assert response.status_code == 200, f"Unexpected status code: {response.status_code}, response is: {response.json()}"
     assert "question_list" in response.json()
-    assert "question" not in response.json()["question_list"][0]
-    assert "correct_answer" not in response.json()
+    assert "correct_answer" not in response.json()["question_list"][0]
 
 
 def test_answer_trivia(base_url):

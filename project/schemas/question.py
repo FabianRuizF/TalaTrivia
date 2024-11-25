@@ -20,6 +20,17 @@ class QuestionResponse(BaseModel):
     class Config:
         from_attributes = True
 
+class QuestionResponseForUser(BaseModel):
+    question_id: int
+    answer_1: str
+    answer_2: str
+    answer_3: str
+    answer_4: str
+    difficulty: int
+    class Config:
+        from_attributes = True
+
+
 class QuestionListResponse(BaseModel):
     question_list: List[QuestionResponse]
 
