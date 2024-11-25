@@ -150,4 +150,6 @@ It might need a model, but that is separated from our structure, since the model
 - Make a cleanup for every test, there are a few that do a cleanup, but not all.
 - Programming the ranking functionality, it's mostly done since it just need to list the data from trivia_user table, which should have the score if its answered
 - Doing an automatic linting to follow pep8 codestyle. This should be done on github actions, so the linting check is automatic.
+- Refactoring scripts that doesnt adhere to the overall code structure (for example services/trivia_participation.py has missing try/excepts , schemas name might need to be refactored so it make sense depending on the context, and so on)
+  
   
