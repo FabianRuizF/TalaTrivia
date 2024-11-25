@@ -1,6 +1,6 @@
 import pytest
 import requests
-
+import time
 
 
 @pytest.fixture(scope="function")
@@ -21,10 +21,11 @@ def test_create_question(base_url):
         "correct_answer": 1,
         "difficulty": 2
     }
+    time.sleep(0.5)
     response = requests.post(f"{base_url}/{endpoint}", json=question_data)
 
     assert response.status_code == 200, f"Unexpected status code: {response.status_code}, response is: {response.json()}"
-    assert response.json()["answer_1"] == question_data["answer_1"]
+    assert response.json()["answer_1"] == question_data["answer_1"], "answer is different from question_data , to the response from API"
     #We correctly created our question, now we will clean it, if it fails, the test should not fail because we are only testing creation
     try:
         endpoint = "question/delete/"

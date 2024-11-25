@@ -1,23 +1,19 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.responses import JSONResponse
 from models.user import User
-from config import settings
-from routers import user,question
+from routers import user,question,trivia, trivia_participation
+from utils.startup_database import startup_database
 
 app = FastAPI()
 
 @app.on_event("startup")
 async def startup_event():
-    global project_settings
-    project_settings = settings.get_settings(env="test")
+    startup_database()
 
-
-
-@app.get("/")
-def root():
-    return {"Hello": "World"}
 
 
 
 app.include_router(user.router)
 app.include_router(question.router)
+app.include_router(trivia.router)
+app.include_router(trivia_participation.router)

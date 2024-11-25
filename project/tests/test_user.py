@@ -26,6 +26,7 @@ def test_create_user(base_url):
     # Check if the response is correct, and if it returns the email without the password in the response
     assert response.status_code == 200, f"Unexpected status code: {response.status_code}, response is: {response.json()}"
     assert response.json()["email"] == user_data["email"]
+    assert "user_id" in response.json()
     assert "password" not in response.json()
 
 

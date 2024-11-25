@@ -1,5 +1,4 @@
 from sqlalchemy.exc import IntegrityError, ProgrammingError
-from database import database
 from models.question import Question
 from schemas.question import QuestionCreate, QuestionResponse, QuestionDelete, QuestionListResponse
 from sqlalchemy.orm import Session
