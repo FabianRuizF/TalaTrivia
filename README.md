@@ -64,9 +64,9 @@ This is the overall structure of the API project.
 
 
 # Database Diagram
-![Alt text](database_simplified_diagram.png)
+![Alt text](images/database_simplified_diagram.png)
 
 
 # API Diagram
 
-![Alt text](API_diagram.png)
+![Alt text](images/API_diagram.png)
