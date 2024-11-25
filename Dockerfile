@@ -9,7 +9,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # we install brcypt so is recognized by FastAPI
-RUN pip install passlib[bcrypt]
+RUN pip install bcrypt==4.0.1
 
 # Copy the rest of the application code
 COPY . .
